@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use App\Models\Project;
+use App\Models\Type;
 use App\Functions\Helper;
 
 class ProjectsTableSeeder extends Seeder
@@ -19,8 +20,9 @@ class ProjectsTableSeeder extends Seeder
             $new_project = new Project();
             $new_project->title = $faker->words(3, true);
             $new_project->slug = Helper::createSlug($new_project->title, new Project());
-            $new_project->description = $faker->paragraph(2);
+            $new_project->description = $faker->paragraph(5);
             $new_project->link = $faker->url();
+            $new_project->type_id = Type::inRandomOrder()->first()->id;
 
             $new_project->save();
         }

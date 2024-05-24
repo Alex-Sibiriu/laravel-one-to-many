@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Functions\Helper;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -32,7 +33,9 @@ class ProjectController extends Controller
         $project = null;
         $title = 'Aggiungi un nuovo progetto';
 
-        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'title'));
+        $types = Type::all();
+
+        return view('admin.projects.create-edit', compact('method', 'route', 'project', 'title', 'types'));
     }
 
     /**
@@ -81,7 +84,9 @@ class ProjectController extends Controller
         $route = route('admin.projects.update', $project);
         $title = 'Modifica il progetto';
 
-        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'title'));
+        $types = Type::all();
+
+        return view('admin.projects.create-edit', compact('project', 'method', 'route', 'title', 'types'));
     }
 
     /**
@@ -116,6 +121,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('success', 'Progetto ' . $project->title . ' eliminato con successo');

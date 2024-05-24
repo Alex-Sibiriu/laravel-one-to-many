@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-6 mb-3">
-      <label for="thumb" class="form-label">Link (*)</label>
+      <label for="link" class="form-label">Link (*)</label>
       <input name="link" type="text" class="form-control @error('link') is-invalid @enderror" id="link"
         value="{{ old('link', $project?->link) }}">
       @error('link')
@@ -45,11 +45,22 @@
       <input name="image" type="file" class="form-control" id="image" onchange="showImage(event)">
     </div>
 
-    <div class="col-12 mb-3">
-      <img src="" id="test-img">
+    <div class="col-6 align-content-center">
+      <label for="type_id" class="form-label m-0 pe-2">Seleziona una tipologia</label>
+      <select name="type_id" id="type_id" class="p-1 rounded-2">
+        <option value="">Nessuna Tipologia</option>
+        @foreach ($types as $type)
+          <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}
+          </option>
+        @endforeach
+      </select>
     </div>
 
-    <div class="col-12 mb-3">
+    <div class="col-6 text-center mb-3 pt-3">
+      <img src="{{ asset('img/no-image.png') }}" id="thumb-img">
+    </div>
+
+    <div class="col-6 mb-3">
       <label for="description" class="form-label">Descrizione</label>
       <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
         rows="10">{{ old('description', $project?->description) }}</textarea>
@@ -68,7 +79,7 @@
 
   <script>
     function showImage(event) {
-      const image = document.getElementById('test-img');
+      const image = document.getElementById('thumb-img');
       image.src = URL.createObjectURL(event.target.files[0]);
     }
   </script>

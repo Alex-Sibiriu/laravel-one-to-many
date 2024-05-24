@@ -21,6 +21,7 @@
               <th class="ps-3" scope="col">ID</th>
               <th class="w-25" scope="col">Titolo</th>
               <th scope="col">Link</th>
+              <th class="text-center" scope="col">Tipo</th>
               <th class="text-center" scope="col">Azioni</th>
             </tr>
           </thead>
@@ -35,6 +36,10 @@
                 </td>
                 <td class="align-content-center">
                   {{ $project->link }}
+                </td>
+
+                <td class="align-content-center text-center">
+                  {{ $project->type->name }}
                 </td>
 
                 <td class="text-center">
