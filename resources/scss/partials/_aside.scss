@@ -1,0 +1,25 @@
+aside {
+    width: 210px;
+    height: 100%;
+    flex-shrink: 0;
+    border-top: 1px solid grey;
+    padding: 10px;
+    li {
+        padding: 0 10px;
+        transition: all .3s;
+        a {
+            display: inline-block;
+            padding: 10px 0;
+            color: white;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            a {
+                color: $primary;
+                font-weight: bold;
+            }
+        }
+    }
+}
