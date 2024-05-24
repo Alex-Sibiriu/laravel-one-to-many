@@ -19,22 +19,42 @@ class ProjectController extends Controller
     {
         $projects = Project::orderByDesc('id')->get();
         $num_projects = Project::count();
-        $search_project = null;
+        $search_project = '';
+        $direction = 'DESC';
 
-        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project'));
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction'));
     }
 
     public function searchProject(Request $request)
     {
         $search_project = '';
+        $direction = 'DESC';
 
         if (isset($request['search_project'])) {
             $search_project = $request['search_project'];
-            $projects = Project::where('title', 'like', '%' . $search_project . '%')->get();
+            $projects = Project::where('title', 'like', '%' . $search_project . '%')->orderByDesc('id')->get();
             $num_projects = Project::where('title', 'like', '%' . $search_project . '%')->count();
+        } else {
+            $projects = Project::orderByDesc('id')->get();
+            $num_projects = Project::count();
         }
 
-        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project'));
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction'));
+    }
+
+    public function orderBy($column, $direction, $search_project = '')
+    {
+        $direction = $direction === 'DESC' ? 'ASC' : 'DESC';
+
+        if (isset($search_project)) {
+            $projects = Project::where('title', 'like', '%' . $search_project . '%')->orderBy($column, $direction)->get();
+            $num_projects = Project::where('title', 'like', '%' . $search_project . '%')->count();
+        } else {
+            $projects = Project::orderBy($column, $direction)->get();
+            $num_projects = Project::count();
+        }
+
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction', 'column'));
     }
 
     /**
