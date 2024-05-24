@@ -15,12 +15,26 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $projects = Project::orderByDesc('id')->get();
         $num_projects = Project::count();
+        $search_project = null;
 
-        return view('admin.projects.index', compact('projects', 'num_projects'));
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project'));
+    }
+
+    public function searchProject(Request $request)
+    {
+        $search_project = '';
+
+        if (isset($request['search_project'])) {
+            $search_project = $request['search_project'];
+            $projects = Project::where('title', 'like', '%' . $search_project . '%')->get();
+            $num_projects = Project::where('title', 'like', '%' . $search_project . '%')->count();
+        }
+
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project'));
     }
 
     /**

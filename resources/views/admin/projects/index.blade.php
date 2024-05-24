@@ -13,7 +13,12 @@
 
     <div class="col-12">
       <div class="px-2 bg-dark rounded-3 pb-1">
-        <h2 class="py-3 text-white rounded-3 fw-bold fs-2 p-3 mt-3">Lista Progetti</h2>
+        <h2 class="py-3 text-white rounded-3 fw-bold fs-2 p-3 mt-3">Progetti Trovati: <span
+            class="text-primary">{{ $num_projects }}</span></h2>
+        @if ($search_project)
+          <p class="fs-4 ps-3 text-white"><strong>Parametro di ricerca: </strong><span
+              class="text-primary">{{ $search_project }}</span></p>
+        @endif
 
         <table class="table table-dark table-striped">
           <thead>

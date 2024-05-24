@@ -50,7 +50,7 @@
       <select name="type_id" id="type_id" class="p-1 rounded-2">
         <option value="">Nessuna Tipologia</option>
         @foreach ($types as $type)
-          <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}
+          <option value="{{ $type->id }}" @if (old('type_id', $project->type?->id) == $type->id) selected @endif>{{ $type->name }}
           </option>
         @endforeach
       </select>

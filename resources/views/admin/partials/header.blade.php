@@ -19,7 +19,13 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto">
+      <form class="d-flex ms-auto me-5" action="{{ route('admin.projects.search') }}" method="GET">
+        <input name="search_project" value="{{ $search_project ?? '' }}" class="form-control me-2" type="text"
+          placeholder="Search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+      </form>
+
+      <ul class="navbar-nav">
         <li class="nav-item align-content-center me-3  text-white">
           Benvenuto <a class="text-decoration-none"
             href="{{ url('profile') }}"><strong>{{ Auth::user()->name }}</strong></a>
