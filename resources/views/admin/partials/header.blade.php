@@ -19,9 +19,8 @@
         </li>
       </ul>
 
-      <form class="d-flex ms-auto me-5" action="{{ route('admin.projects.search') }}" method="GET">
-        <input name="search_project" value="{{ $search_project ?? '' }}" class="form-control me-2" type="text"
-          placeholder="Search">
+      <form class="d-flex ms-auto me-5" action="{{ route('admin.projects.index') }}" method="GET">
+        <input name="search_project" class="form-control me-2" type="text" placeholder="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
       </form>
 

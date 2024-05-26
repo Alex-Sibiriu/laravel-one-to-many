@@ -28,7 +28,6 @@
 
     <div class="d-none flex-column flex-sm-fill d-sm-flex align-items-sm-center justify-content-sm-center">
       <div>
-        {{-- Il testo deve essere bianco da qui --}}
         <p class="small text-white">
           {!! __('Showing') !!}
           <span class="fw-semibold">{{ $paginator->firstItem() }}</span>
@@ -38,7 +37,6 @@
           <span class="fw-semibold">{{ $paginator->total() }}</span>
           {!! __('results') !!}
         </p>
-        {{-- a qui --}}
       </div>
 
       <div>

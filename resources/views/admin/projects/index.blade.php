@@ -23,53 +23,59 @@
         <table class="table table-dark table-striped">
           <thead>
             <tr>
-              <th class="ps-3 id-column" scope="col"><a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'id', 'direction' => $direction, 'search_project' => $search_project]) }}">ID</a>
+              <th class="ps-3 id-column" scope="col">
+                <a class="text-white text-decoration-none"
+                  href="{{ route('admin.projects.order', ['column' => 'id', 'direction' => $direction, 'search_project' => $search_project]) }}">ID
 
-                @if (isset($column) && $column === 'id')
-                  <span class="ps-1 text-primary">
-                    @if ($direction === 'DESC')
-                      <i class="fa-solid fa-down-long"></i>
-                    @else
-                      <i class="fa-solid fa-up-long"></i>
-                    @endif
-                  </span>
-                @else
-                  <i class="fa-solid fa-arrows-up-down"></i>
-                @endif
+                  @if (isset($column) && $column === 'id')
+                    <span class="ps-1 text-primary">
+                      @if ($direction === 'DESC')
+                        <i class="fa-solid fa-down-long"></i>
+                      @else
+                        <i class="fa-solid fa-up-long"></i>
+                      @endif
+                    </span>
+                  @else
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                  @endif
+                </a>
 
               </th>
-              <th class="w-25" scope="col"><a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'title', 'direction' => $direction, 'search_project' => $search_project]) }}">Titolo</a>
+              <th class="w-25" scope="col">
+                <a class="text-white text-decoration-none"
+                  href="{{ route('admin.projects.order', ['column' => 'title', 'direction' => $direction, 'search_project' => $search_project]) }}">Titolo
 
-                @if (isset($column) && $column === 'title')
-                  <span class="ps-1 text-primary">
-                    @if ($direction === 'DESC')
-                      <i class="fa-solid fa-down-long"></i>
-                    @else
-                      <i class="fa-solid fa-up-long"></i>
-                    @endif
-                  </span>
-                @else
-                  <i class="fa-solid fa-arrows-up-down"></i>
-                @endif
+                  @if (isset($column) && $column === 'title')
+                    <span class="ps-1 text-primary">
+                      @if ($direction === 'DESC')
+                        <i class="fa-solid fa-down-long"></i>
+                      @else
+                        <i class="fa-solid fa-up-long"></i>
+                      @endif
+                    </span>
+                  @else
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                  @endif
+                </a>
 
               </th>
               <th scope="col">Link</th>
-              <th class="text-center" scope="col"><a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'type_id', 'direction' => $direction, 'search_project' => $search_project]) }}">Tipo</a>
+              <th class="text-center" scope="col">
+                <a class="text-white text-decoration-none"
+                  href="{{ route('admin.projects.order', ['column' => 'type_id', 'direction' => $direction, 'search_project' => $search_project]) }}">Tipo
 
-                @if (isset($column) && $column === 'type_id')
-                  <span class="ps-1 text-primary">
-                    @if ($direction === 'DESC')
-                      <i class="fa-solid fa-down-long"></i>
-                    @else
-                      <i class="fa-solid fa-up-long"></i>
-                    @endif
-                  </span>
-                @else
-                  <i class="fa-solid fa-arrows-up-down"></i>
-                @endif
+                  @if (isset($column) && $column === 'type_id')
+                    <span class="ps-1 text-primary">
+                      @if ($direction === 'DESC')
+                        <i class="fa-solid fa-down-long"></i>
+                      @else
+                        <i class="fa-solid fa-up-long"></i>
+                      @endif
+                    </span>
+                  @else
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                  @endif
+                </a>
 
               </th>
               <th class="text-center" scope="col">Azioni</th>
