@@ -33,7 +33,6 @@ Route::middleware(['auth', 'verified'])
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('home');
         Route::resource('projects', ProjectController::class);
-        Route::get('search', [ProjectController::class, 'searchProject'])->name('projects.search');
         Route::get('order-by/{column}/{direction}/{search_project?}', [ProjectController::class, 'orderBy'])->name('projects.order');
 
         Route::resource('technologies', TechnologyController::class)->except(['show', 'create', 'edit']);
