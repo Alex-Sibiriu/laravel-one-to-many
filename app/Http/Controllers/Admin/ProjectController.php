@@ -17,34 +17,30 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $search_project = '';
-        $direction = 'DESC';
+        if (!isset($_GET['direction'])) {
+            $direction = 'DESC';
+        } else {
+            $direction = $_GET['direction'];
+            $direction = $direction === 'DESC' ? 'ASC' : 'DESC';
+        }
+
+        if (!isset($_GET['column'])) {
+            $column = 'id';
+        } else {
+            $column = $_GET['column'];
+        }
 
         if (isset($_GET['search_project'])) {
             $search_project = $_GET['search_project'];
-            $projects = Project::where('title', 'like', '%' . $search_project . '%')->orderByDesc('id')->paginate(10);
-            $num_projects = Project::where('title', 'like', '%' . $search_project . '%')->count();
-        } else {
-            $projects = Project::orderByDesc('id')->paginate(10);
-            $num_projects = Project::count();
-        }
-
-        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction'));
-    }
-
-    public function orderBy($column, $direction, $search_project = '')
-    {
-        $direction = $direction === 'DESC' ? 'ASC' : 'DESC';
-
-        if (isset($search_project)) {
             $projects = Project::where('title', 'like', '%' . $search_project . '%')->orderBy($column, $direction)->paginate(10);
             $num_projects = Project::where('title', 'like', '%' . $search_project . '%')->count();
         } else {
             $projects = Project::orderBy($column, $direction)->paginate(10);
             $num_projects = Project::count();
+            $search_project = '';
         }
 
-        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction', 'column'));
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction'));
     }
 
     /**

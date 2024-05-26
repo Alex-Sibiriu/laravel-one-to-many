@@ -25,7 +25,7 @@
             <tr>
               <th class="ps-3 id-column" scope="col">
                 <a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'id', 'direction' => $direction, 'search_project' => $search_project]) }}">ID
+                  href="{{ route('admin.projects.index', ['column' => 'id', 'direction' => $direction, 'search_project' => $search_project]) }}">ID
 
                   @if (isset($column) && $column === 'id')
                     <span class="ps-1 text-primary">
@@ -43,7 +43,7 @@
               </th>
               <th class="w-25" scope="col">
                 <a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'title', 'direction' => $direction, 'search_project' => $search_project]) }}">Titolo
+                  href="{{ route('admin.projects.index', ['column' => 'title', 'direction' => $direction, 'search_project' => $search_project]) }}">Titolo
 
                   @if (isset($column) && $column === 'title')
                     <span class="ps-1 text-primary">
@@ -62,7 +62,7 @@
               <th scope="col">Link</th>
               <th class="text-center" scope="col">
                 <a class="text-white text-decoration-none"
-                  href="{{ route('admin.projects.order', ['column' => 'type_id', 'direction' => $direction, 'search_project' => $search_project]) }}">Tipo
+                  href="{{ route('admin.projects.index', ['column' => 'type_id', 'direction' => $direction, 'search_project' => $search_project]) }}">Tipo
 
                   @if (isset($column) && $column === 'type_id')
                     <span class="ps-1 text-primary">
