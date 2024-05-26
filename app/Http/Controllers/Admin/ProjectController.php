@@ -40,7 +40,7 @@ class ProjectController extends Controller
             $search_project = '';
         }
 
-        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction'));
+        return view('admin.projects.index', compact('projects', 'num_projects', 'search_project', 'direction', 'column'));
     }
 
     /**
