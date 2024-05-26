@@ -24,7 +24,9 @@
 
     <div class="ps-5 w-50">
       <p class="py-2"><strong>Titolo: </strong>{{ $project->title }}</p>
-      <p class="py-2"><strong>Tipologia: </strong>{{ $project->type->name }}</p>
+      @if ($project->type)
+        <p class="py-2"><strong>Tipologia: </strong>{{ $project->type->name }}</p>
+      @endif
       <p class="py-2"><strong>Link: </strong>{{ $project->link }}</p>
       <p class="py-2"><strong>Descrizione: </strong>{{ $project->description }}</p>
     </div>

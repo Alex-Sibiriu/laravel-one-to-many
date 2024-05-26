@@ -89,7 +89,7 @@
                 </td>
 
                 <td class="align-content-center text-center">
-                  {{ $project->type->name }}
+                  {{ $project->type ? $project->type->name : '---' }}
                 </td>
 
                 <td class="text-center">
@@ -118,6 +118,7 @@
 
           </tbody>
         </table>
+        {{ $projects->links() }}
       </div>
     </div>
   </div>
