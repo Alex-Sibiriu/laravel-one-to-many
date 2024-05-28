@@ -57,7 +57,8 @@
     </div>
 
     <div class="col-6 text-center mb-3 pt-3">
-      <img src="{{ asset('img/no-image.png') }}" id="thumb-img">
+      <img src="{{ asset('storage/' . $project->image) }}" onerror="this.src='{{ asset('img/no-image.png') }}'"
+        id="thumb-img">
     </div>
 
     <div class="col-6 mb-3">
